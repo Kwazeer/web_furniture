@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+
+{% block top_body %}
+    <div class="content">
+        <div class="container">
+            {#     Подключение детали товара с изображением       #}
+            {% include 'digital/components/_product_params.html' %}
+
+            {#      Подключение детали товара с характеристиками      #}
+            {% include 'digital/components/_product_info.html' %}
+        </div>
+    </div>
+{% endblock top_body %}
+
+
+{% block bottom_body %}
+
+    <div class="same_products">
+        <div class="content">
+            <div class="container">
+                <div class="same_product_text">
+                    <h2 class="content__title">Похожие товары</h2>
+                    <a href="{{ category.get_absolute_url }}" class="content__title"><span>Больше Товаров</span> <img
+                            src="{% static 'digital/image/icons/errow_right.svg' %}"
+                            alt=""></a>
+                </div>
+                <div class="content__cards">
+
+                    {% for product in products|slice:":3" %}
+                        {#        Подключение карточки товара компонентом        #}
+                        {% include 'digital/components/_card.html' %}
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock bottom_body %}

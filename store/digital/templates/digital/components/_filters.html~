@@ -1,0 +1,62 @@
+{% load static %}
+{% load loft_tags %}
+
+<div class="list_filter">
+    <form action="" method="post" enctype="multipart/form-data">
+        <div class="list_label">
+
+            <div class="brand">
+                {#      Сохраняем выбранный параметр в фильтрации          #}
+                <button class="cat_name" type="button"><span>{% if query.model %}{{ query.model }}{% else %}
+                    Модель{% endif %}</span><img
+                        src="{% static 'digital/image/icons/errow_down.svg' %}"
+                        alt=""></button>
+                <ul class="list_cat">
+                    {% for model in models %}
+                        <li><a class="category" href="?{% query_params model=model %}">{{ model.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+            <div class="brand brand1">
+                <button class="cat_name" type="button"><span>{% if query.color %}{{ query.color }}{% else %}
+                    Цвет{% endif %}</span> <img src="{% static 'digital/image/icons/errow_down.svg' %}"
+                                                alt=""></button>
+                <ul class="list_cat">
+                    {% for color in color_names %}
+                        <li><a class="category" href="?{% query_params color=color %}">{{ color }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+            <div class="brand brand2">
+                <button class="cat_name" type="button"><span>{% if query.from %}От {{ query.from }} USD{% else %}
+                    Цена от{% endif %}
+                </span> <img src="{% static 'digital/image/icons/errow_down.svg' %}"
+                             alt=""></button>
+                <ul class="list_cat">
+                    {% for price in prices %}
+                        <li><a class="category" href="?{% query_params from=price %}">{{ price }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+            <div class="brand brand3">
+                <button class="cat_name" type="button"><span>{% if query.till %}До {{ query.till }} USD{% else %}
+                    Цена до{% endif %}</span> <img
+                        src="{% static 'digital/image/icons/errow_down.svg' %}"
+                        alt=""></button>
+                <ul class="list_cat">
+                    {% for price in prices %}
+                        <li><a class="category" href="?{% query_params till=price %}">{{ price }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+        </div>
+    </form>
+</div>

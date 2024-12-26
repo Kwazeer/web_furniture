@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+
+{% block top_body %}
+
+    <div class="content">
+        <div class="container">
+
+            {% if favorites %}
+            <h1 class="content__title_info">Ваши избранные товары:</h1>
+
+            <div class="content__cards list_cards">
+
+                {% for product in favorites %}
+                    {% include 'digital/components/_card.html' %}
+                {% endfor %}
+
+            {% else %}
+                <h1 class="content__title_info">У вас пока нет избранных товаров</h1>
+            {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock top_body %}

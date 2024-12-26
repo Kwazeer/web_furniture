@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+
+{% block top_body %}
+
+    <div class="content">
+        <div class="container">
+            <h2 class="content__title">{{ title }}</h2>
+
+            {#   Подключение компонента с фильтрами   #}
+            {% include 'digital/components/_filters.html' %}
+
+        </div>
+    </div>
+
+{% endblock top_body %}
+
+
+
+
+{% block bottom_body %}
+
+    <div class="content">
+        <div class="container">
+            <div class="content__cards list_cards">
+
+                {% for product in products %}
+
+                    {#        Подключение карточки товара компонентом        #}
+                    {% include 'digital/components/_card.html' %}
+
+                {% endfor %}
+
+            </div>
+
+            {#      Подключение компонента с пагинацией      #}
+            {% include 'digital/components/_paginator.html' %}
+        
+        </div>
+    </div>
+
+{% endblock bottom_body %}
+
+

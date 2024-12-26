@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/media.css">
+  <title>Digitalstore</title>
+</head>
+
+<body>
+  <!-- header start -->
+  <header>
+    <div class="nav__header">
+      <div class="container">
+        <div class="nav_info">
+          <div class="nav_left">
+            <div class="languege">
+              <select name="brend" class="filter_lang">
+                <option value="Samsung"><a href="" class="lang">Ру</a></option>
+                <option value="Apple"><a href="" class="lang">En</a></option>
+              </select>
+            </div>
+            <div class="city">
+              <select name="brend" class="filter_city">
+                <option value="Samsung"><a href="" class="lang">Ташкент</a></option>
+                <option value="Apple"><a href="" class="lang">Самарканд</a></option>
+              </select>
+            </div>
+
+          </div>
+          <div class="nav_right">
+            <a href="">Вход</a>
+            <a href="">Регистрация</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav_menu_icon container">
+        <div class="nav__top">
+          <a href="" class="logo">
+            <img src="../image/logo/logo store 2.svg" alt="">
+          </a>
+          <form action="" method="get" enctype="multipart/form-data">
+            <label for="s" class="label_search">
+              <input id="s" type="text" placeholder="Поиск по товарам" class="serch_in">
+              <button type="submit"><img class="icon_serch" src="../image/icons/Vector.svg" alt=""></button>
+            </label>
+          </form>
+          <div class="nav_icon">
+            <ul class="icon">
+              <li><a href="#" class="click_icon"><img src="../image/icon_header/Group 524.svg" alt=""></a></li>
+              <li><a href="#" class="click_icon"><img src="../image/icon_header/bi_cart3 (1).svg" alt=""></a></li>
+              <li><a href="#" class="click_icon"><img src="../image/icon_header/Group 522 (1).svg" alt=""></a></li>
+              <li class="dropdown">
+                <a href="#!" class="category_burger"><img src="../image/icons/burger.svg" alt="">
+                </a>
+                <div class="dropdown-content">
+                  <ul class="list_burger">
+                    <li class="burger_list"><a href=""><img src="../image/icon_burger/washing.svg" alt=""> <span
+                          class="burger_text">Техника для дома</span></a></li>
+                    <li class="burger_list"><a href=""><img src="../image/icon_burger/printer.svg" alt=""> <span
+                          class="burger_text">Офисная техника</span></a></li>
+                    <li class="burger_list"><a href=""><img src="../image/icon_burger/condition.svg" alt=""> <span
+                          class="burger_text">Климатическая техника</span></a></li>
+                    <li class="burger_list"><a href=""><img src="../image/icon_burger/tv.svg" alt=""> <span
+                          class="burger_text">Телевизоры</span></a></li>
+                    <li class="burger_list"><a href=""><img src="../image/icon_burger/phone.svg" alt=""> <span
+                          class="burger_text">Телефоны и гаджеты</span></a></li>
+                    <li class="burger_list"><a href=""><img src="../image/icon_burger/komputer.svg" alt=""> <span
+                          class="burger_text">Компьтеры и ноутбуки</span></a></li>
+                    <li class="burger_list"><a href=""><img src="../image/icon_burger/photo.svg" alt=""> <span
+                          class="burger_text">Фото и видео</span></a></li>
+                    <li class="burger_list"><a href=""><img src="../image/icon_burger/fan.svg" alt=""> <span
+                          class="burger_text">Красота и здоровье</span></a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </nav>
+
+
+
+    <div class="header_nav_menu">
+      <div class="container">
+        <div class="nav__menu">
+          <ul class="nav__category">
+            <li><a href="" class="category"><img src="../image/icons/phone.svg" alt="">
+                <p class="cat_text">Смартфоны</p>
+              </a></li>
+            <li><a href="" class="category"><img src="../image/icons/book.svg" alt="">
+                <p class="cat_text">Ноутбуки</p>
+              </a></li>
+            <li><a href="" class="category"><img src="../image/icons/tv.svg" alt="">
+                <p class="cat_text">Телевизоры</p>
+              </a></li>
+            <li><a href="" class="category"><img src="../image/icons/condition.svg" alt="">
+                <p class="cat_text">Кондиционеры</p>
+              </a></li>
+            <li><a href="" class="category"><img src="../image/icons/refrigerator.svg" alt="">
+                <p class="cat_text">Холодильники</p>
+              </a></li>
+          </ul>
+
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </header>
+  <!-- header end -->
+
+
+  <!-- Main start -->
+  <main>
+    <div class="content">
+        <div class="container">
+            <h2 class="login_title">Регистрация</h2>
+
+            <div class="login_content">
+                <div class="login">
+                    <div class="login_form">
+                        <form action="/register" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="csrfmiddlewaretoken" value="4bqkgp3rNWRFZ1wwoJb63Vvsf6sHJqcG2oapndterQVGDH9ZgmapWep9Fz6GlhTO">
+                            <div class="form-group">
+                                <input type="text" name="username" class="form-control" placeholder="Имя пользователя" autofocus="" required="" id="id_username">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="first_name" class="form-control" placeholder="Ваше имя" required="" id="id_first_name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="last_name" class="form-control" placeholder="Ваша фамилия" required="" id="id_last_name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Ваша почта" required="" id="id_email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password1" class="form-control" placeholder="Пароль" required="" id="id_password1">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password2" class="form-control" placeholder="Подтвердите пароль" required="" id="id_password2">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="phone_number" class="form-control" placeholder="Номер телефона" required="" id="id_phone_number">
+                            </div>
+                            <div class="form-group">
+                                <input type="file" name="photo" class="form-control" id="id_photo">
+                            </div>
+
+                            <button class="btn btn-register" type="submit">Зарегистироваться</button>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="register_info">
+                    <h2 class="first_visit">Уже есть аккаунт?</h2>
+                    <p>Если Вы уже проходили регистрацию, войдите через Ваш аккаунт или восстоновите свой доступ. </p>
+                    <a href="/login" class="btn-to_login">Войти</a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+  <!-- Main end -->
+
+  <!-- Footer start -->
+  <footer>
+    <div class="footer_info">
+      <div class="container">
+        <div class="footer__block">
+
+          <div class="text_footer">
+            <h3 class="footer_title">Интернет-магазин</h3>
+            <ul class="footer_list">
+              <li><a href="" class="footer_link">О нас</a></li>
+              <li><a href="" class="footer_link">Адрес магазинов</a></li>
+              <li><a href="" class="footer_link">Подарочные сертификаты</a></li>
+              <li><a href="" class="footer_link">Торговые марки</a></li>
+              <li><a href="" class="footer_link">Каталог</a></li>
+            </ul>
+          </div>
+          <div class="text_footer">
+            <h3 class="footer_title">Покупательский сервис</h3>
+            <ul class="footer_list">
+              <li><a href="" class="footer_link">Покупка в рассрочку</a></li>
+              <li><a href="" class="footer_link">Возврат товара</a></li>
+              <li><a href="" class="footer_link">Гарантия на товары</a></li>
+              <li><a href="" class="footer_link">Сервисный центр</a></li>
+            </ul>
+          </div>
+
+          <div class="text_footer">
+            <h3 class="footer_title">Контакты</h3>
+            <ul class="footer_list">
+              <li>
+                <div class="footer_contact">
+                  <span class="footer_link"> г. Ташкент, Шота Руставели 150</span>
+                  <a href="" class="footer_link">+998 71 200 99 71 </a>
+                  <span class="footer_link">Пн-Вс 9.00 - 18.00</span>
+                </div>
+              </li>
+              <li><a href="" class="footer_link">admin@digitalsrore.uz</a></li>
+              <li><a href="" class="footer_link">Посмотреть на карте</a></li>
+
+            </ul>
+          </div>
+
+          <div class="text_footer">
+            <h3 class="footer_title">Способ оплаты</h3>
+            <ul class="footer_list_pay">
+              <li>
+                <a href="" class="footer_pay">
+                  <img src="../image/pyment_img/Rectangle 362.png" alt="">
+                </a>
+              </li>
+              <li><a href="" class="footer_pay"><img src="../image/pyment_img/Rectangle 363.png" alt=""></a></li>
+              <li><a href="" class="footer_pay"><img src="../image/pyment_img/Rectangle 364.png" alt=""></a></li>
+              <li><a href="" class="footer_pay"><img src="../image/pyment_img/Rectangle 365.png" alt=""></a></li>
+
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+  </footer>
+
+
+  <!-- Footer end -->
+
+
+  
+  <script src="../js/script.js"></script>
+</body>
+
+</html>

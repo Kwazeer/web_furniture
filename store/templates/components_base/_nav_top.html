@@ -1,0 +1,51 @@
+{% load static %}
+{% load loft_tags %}
+
+<div class="nav_menu_icon container">
+    <div class="nav__top">
+        <a href="{% url 'main' %}" class="logo">
+            <img src="{% static 'digital/image/logo/logo store 2.svg' %}" alt="">
+        </a>
+        <form action="{% url 'search' %}" method="get" enctype="multipart/form-data">
+            <label for="s" class="label_search">
+                <input name="q" id="s" type="text" placeholder="Поиск по товарам" class="serch_in"">
+                <button type="submit"><img class="icon_serch" src="{% static 'digital/image/icons/Vector.svg' %}"
+                                           alt=""></button>
+            </label>
+        </form>
+        <div class="nav_icon">
+            <ul class="icon">
+                <li><a href="{% url 'favorites' %}" class="click_icon"><img
+                        src="{% static 'digital/image/icon_header/Group 524.svg' %}"
+                        alt=""></a></li>
+                <li><a href="{% url 'my_cart' %}" class="click_icon"><img
+                        src="{% static 'digital/image/icon_header/bi_cart3 (1).svg' %}"
+                        alt=""></a>
+                </li>
+                <li><a href="{% url 'profile' %}" class="click_icon"><img
+                        src="{% static 'digital/image/icon_header/Group 522 (1).svg' %}"
+                        alt=""></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#!" class="category_burger"><img src="{% static 'digital/image/icons/burger.svg' %}"
+                                                              alt="">
+                    </a>
+                    <div class="dropdown-content">
+                        <ul class="list_burger">
+
+                            {#        Вывод категорий в выпадающем меню        #}
+                            {% get_categories as categories %}
+                            {% for category in categories %}
+                                <li class="burger_list"><a href="{{ category.get_absolute_url }}"><img
+                                        src="{{ category.get_icon }}" alt="">
+                                    <span class="burger_text">{{ category.title }}</span></a></li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

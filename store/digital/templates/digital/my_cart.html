@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load loft_tags %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+
+{% block top_body %}
+
+    {% if order_products %}
+        <div class="content">
+            <div class="container">
+                <div class="my_card_orders">
+                    <h3>Моя Корзина</h3>
+                </div>
+
+                <div class="total_products_price">
+                    <p class="total_products_cart"><span>Общее количество: </span>{{ order.get_order_total_quantity }}
+                    </p>
+                    <p class="total_price_cart"><span>Общая стоимость: </span>{{ order.get_order_total_price }} USD</p>
+                </div>
+
+                <ul class="list_card_orders">
+                    {% for item in order_products %}
+                        <li class="order order_cart">
+                            <div class="info">
+                                <a href="#">
+                                    <img class="order_cart_img" src="{{ item.product.get_photo }}" alt="">
+                                </a>
+                                <div class="info_order">
+                                    <h4 class="product_title">{{ item.product.title }}</h4>
+                                    <div class="color_quantity">
+                                        <div class="color"><p>Цвет:</p> <span>{{ item.product.color_name }}</span></div>
+
+                                        <div class="quantity"><p>Кол-во:</p> <span>{{ item.quantity }}</span>
+
+                                            <div class="quantity_arrow">
+
+                                                <a href="{% url 'add_or_delete' item.product.slug 'add' %}">
+                                                    <img data-product="id" data-action="add"
+                                                         class="chg-quantity update-cart"
+                                                         src="{% static 'digital/image/icons/arrow-up.png' %}" alt="">
+                                                </a>
+
+                                                <a href="{% url 'add_or_delete' item.product.slug 'delete' %}">
+                                                    <img data-product="id" data-action="remove"
+                                                         class="chg-quantity update-cart"
+                                                         src="{% static 'digital/image/icons/arrow-down.png' %}" alt="">
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="price_cart">
+                                <p class="product_price_title">Стоимость</p>
+                                <p class="product_price">{{ item.product.price }} USD</p>
+                            </div>
+
+                            {#              Получаем скидку              #}
+                            {% if item.product.discount %}
+                                <div class="price_cart" style="margin-right: 30px">
+                                    <p class="product_price_title">Cо скидкой</p>
+                                    <p class="product_price"><span class="discount_product"
+                                    style="text-decoration: none">{% get_discount_price item.product.price item.product.discount %} USD</span>
+                                    </p>
+                                </div>
+                            {% endif %}
+
+                            <div class="data_add">
+                                <p class="product_data">Дата добавления</p>
+                                <div class="data"><img src="{% static 'digital/image/icons/clarity_date-line.svg' %}"
+                                                       alt="">
+                                    {#             Преобразование даты через точку               #}
+                                    <span>{{ item.created_at|date:"d.m.Y" }}</span>
+                                </div>
+                            </div>
+                            <div class="price_cart">
+                                <p class="product_price_title">Итого</p>
+                                <p class="product_price">{{ item.get_total_price }} USD</p>
+                            </div>
+
+                        </li>
+                        </ul>
+                    {% endfor %}
+
+                <div class="order_btns">
+                    <a href="{% url 'delete_cart' %}" class="btn_order">Очистить корзину</a>
+                    <a href="{% url 'checkout' %}" class="btn_order">Оформить заказ</a>
+                </div>
+
+            </div>
+        </div>
+    {% else %}
+        <div class="content">
+            <div class="container">
+                <div class="my_card_orders">
+                    <h3>Ваша корзина пуста, но вы всё ещё можете добавить в неё товары!</h3>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock top_body %}
+
+{% block bottom_body %}
+
+    <div class="content">
+        <div class="container">
+            <h2 class="content__title">Больше товаров</h2>
+            <div class="content__cards">
+                {% for product in products %}
+
+                    {#        Подключение карточки товара компонентом        #}
+                    {% include 'digital/components/_card.html' %}
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock bottom_body %}

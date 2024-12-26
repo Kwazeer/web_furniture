@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+
+{% block top_body %}
+
+    <div class="checkout-wrapper">
+        <div class="container_checkout">
+            <!-- Delivery Address Section -->
+            <div class="delivery-section_checkout">
+
+                <form class="delivery-form_checkout" action="{% url 'payment' %}" method="post">
+                    {% csrf_token %}
+                    <h2 class="content__title">Адрес доставки</h2>
+                    <div class="form-group_checkout">
+                        <p class="card_title"><label for="address">Адрес</label></p>
+                        {{ form.address }}
+                    </div>
+                    <div class="form-group_checkout">
+                        <p class="card_title"><label for="phone">Номер телефона</label></p>
+                        {{ form.phone }}
+                    </div>
+                    <div class="form-group_checkout">
+                        <p class="card_title"><label for="region">Регион</label></p>
+                        {{ form.region }}
+                    </div>
+                    <div class="form-group_checkout">
+                        <p class="card_title"><label for="city">Город</label></p>
+                        {{ form.city }}
+                    </div>
+
+                    <button type="submit" class="checkout-btn_checkout">Перейти к оплате</button>
+                </form>
+            </div>
+
+            <!-- Orders Section -->
+            <div class="orders-section_checkout">
+                <h2 class="content__title">Мои заказы</h2>
+                <ul class="orders-list_checkout">
+                    {% for order_product in order_products %}
+
+                        <li class="order-item_checkout">
+                            <div class="product-image_checkout">
+                                <img src="{{ order_product.product.get_photo }}" alt="">
+                            </div>
+                            <div class="product-details_checkout">
+                                <div class="product-title_checkout">{{ order_product.product.title }}</div>
+                                <div class="product-color_checkout">Цвет: {{ order_product.product.color_name }}</div>
+                                <div class="product-quantity_checkout">Количество: {{ order_product.quantity }}</div>
+                                <div class="product-price_checkout">Цена: ${{ order_product.total_price }}</div>
+                                <div class="order-date_checkout">Дата
+                                    добавления: {{ order_product.created_at|date:"d.m.Y" }}</div>
+                            </div>
+                        </li>
+
+                    {% endfor %}
+                    <p class="card_title">Итоговая сумма: {{ order.get_order_total_price }} USD</p>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock top_body %}
+
+{% block js_script %}
+
+    <script>
+        const regionCities = {{ dict_city|safe }};
+
+        const regionSelect = document.getElementById('id_region');
+        const citySelect = document.getElementById('id_city');
+
+
+        regionSelect.addEventListener('change', function () {
+            const selectedRegion = this.value;
+            updateCityOptions(selectedRegion);
+        });
+
+
+        function updateCityOptions(selectedRegion) {
+            citySelect.innerHTML = '<option value="" selected>---------</option>';
+            if (selectedRegion in regionCities) {
+                const cities = regionCities[selectedRegion];
+                cities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city[1];
+                    option.text = city[0];
+                    citySelect.add(option);
+                });
+            }
+        }
+
+
+    </script>
+
+{% endblock js_script %}

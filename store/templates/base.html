@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {#  Подключение CSS  #}
+    {% include 'components_base/_style.html' %}
+
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+
+</head>
+
+<body>
+<!-- header start -->
+<header>
+    {#     Подключение самой верхней панели NAV INFO       #}
+    {% include 'components_base/_nav_info.html' %}
+
+    <nav>
+        {#     Подключение панели с логотипом NAV TOP       #}
+        {% include 'components_base/_nav_top.html' %}
+    </nav>
+
+    {#     Подключение панели с категориями NAV MENU       #}
+    {% include 'components_base/_nav_menu.html' %}
+
+</header>
+<!-- header end -->
+
+<!-- Main start -->
+<main>
+    {#  Здесь верхняя часть тела сайта  #}
+    {% block top_body %}
+
+    {% endblock %}
+
+    {#  Здесь нижняя часть тела сайта  #}
+    {% block bottom_body %}
+
+    {% endblock %}
+
+</main>
+<!-- Main end -->
+
+<!-- Footer start -->
+<footer>
+    {#      Подключение FOOTER      #}
+    {% include 'components_base/_footer.html' %}
+
+</footer>
+<!-- Footer end -->
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+<script src="{% static 'digital/js/script.js' %}"></script>
+
+{# Блок для кастомных скриптов на странице #}
+{% block js_script %}
+{% endblock js_script %}
+
+</body>
+</html>

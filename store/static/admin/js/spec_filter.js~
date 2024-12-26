@@ -1,0 +1,32 @@
+(function($) {
+    $(document).ready(function() {
+        // Отслеживаем изменения в поле категории
+        $('#id_category').change(function() {
+            const categoryId = $(this).val();
+            if (categoryId) {
+                // Получаем объект в SpecValue
+                $('.dynamic-specvalue_set select[name$="spec"]').each(function() {
+                    const specSelect = $(this);
+                    // AJAX-запрос для фильтрации характеристик
+                    $.ajax({
+                        url: `/admin/api/filter-specs/`, // Путь к вашему API
+                        data: {
+                            category_id: categoryId
+                        },
+                        success: function(data) {
+                            specSelect.empty();
+                            specSelect.append(
+                                $('<option>', { value: '', text: '---------'})
+                            );
+                            $.each(data, function(index, spec) {
+                                specSelect.append(
+                                    $('<option>', { value: spec.id, text: spec.title })
+                                );
+                            });
+                        }
+                    });
+                });
+            }
+        });
+    });
+})(django.jQuery);
